@@ -10,7 +10,7 @@ import matplotlib.dates as matdates
 import matplotlib.ticker as matticker
 from matplotlib.finance import candlestick_ohlc as candles
 
-#importing seaborn
+# importing seaborn
 import seaborn as sns
 color = sns.color_palette()
 
@@ -29,11 +29,12 @@ dfBitcoin = pd.read_csv("./data/bitcoin_price.csv", parse_dates=["Date"])
 dfEtherium = pd.read_csv("./data/ethereum_price.csv", parse_dates=["Date"])
 dfRipple = pd.read_csv("./data/ripple_price.csv", parse_dates=["Date"])
 
+
 dfBitcoin.head()
 # dfEtherium.head()
 # dfRipple.head()
 
-#Plots the Closing prices of bitcoins
+# Plots the Closing prices of bitcoins
 dfBitcoin["Date_mplt"] = dfBitcoin["Date"].apply(lambda x: matdates.date2num(x))
 fig, ax = plt.subplots(figsize=(12,8))
 sns.tsplot(dfBitcoin.Close.values, time=dfBitcoin.Date_mplt.values, alpha=0.8, color=color[3], ax=ax)
@@ -43,9 +44,9 @@ fig.autofmt_xdate()
 plt.xlabel('Date', fontsize=12)
 plt.ylabel('Price in USD', fontsize=12)
 plt.title("Closing Price Distribution of Bitcoin", fontsize=15)
-plt.show() ##END
+plt.show() # END
 
-#Plotting using Candle Sticks
+# Plotting using Candle Sticks
 fig = plt.figure(figsize=(12,8))
 ax1 = plt.subplot2grid((1,1),(0,0))
 
@@ -62,10 +63,10 @@ ax1.xaxis.set_major_locator(matticker.MaxNLocator(10))
 plt.xlabel("Date", fontsize=12)
 plt.ylabel("Price in USD", fontsize=12)
 plt.title("Candlestick chart for Bitcoin", fontsize=15)
-plt.subplots_adjust(left=0.09, bottom=0.20, right=0.94, top=0.90, wspace=0.2, hspace=0)
-plt.show() ##END
+plt.subplots_adjust(left=0.09, bottom=0.20, right=0.94, top=0.90, wspace=0.2,  hspace=0)
+plt.show() # END
 
-#ALLOWS FOR ANY COIN TO BE PLOTTED
+# ALLOWS FOR ANY COIN TO BE PLOTTED
 DATA_FILE = "ethereum_price.csv"
 
 coin_name = DATA_FILE.split("_")[0]
@@ -82,7 +83,7 @@ plt.title("Closing Price Distribution of "+coin_name, fontsize=15)
 plt.show() ##END
 
 
-## GENERATING A HEATMAP
+# GENERATING A HEATMAP
 files_to_use = ["bitcoin_price.csv","ethereum_price.csv","ripple_price.csv"]
 
 cols_to_use =[]
@@ -106,7 +107,7 @@ plt.title("Cryptocurrency Heat Map", fontsize=16)
 plt.show() ##END
 
 
-## Looking for the Future Prices
+# Looking for the Future Prices
 DATA_FILE = "ripple_price.csv"
 df = pd.read_csv("./data/"+DATA_FILE, usecols=["Date", "Close"], parse_dates=["Date"])
 df.columns = ["ds","y"]
