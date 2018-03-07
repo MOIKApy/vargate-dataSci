@@ -1,17 +1,11 @@
-# IMPORTING PANDAS
+import matplotlib
 import matplotlib.dates as matdates
-# IMPORTING matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.ticker as matticker
-# IMPORTING NUMPY
 import numpy as np
 import pandas as pd
-# importing seaborn
 import seaborn as sns
 from matplotlib.finance import candlestick_ohlc as candles
-
-# Importing Prophet
-from fbprophet import Prophet
 
 color = sns.color_palette()
 
@@ -21,6 +15,33 @@ color = sns.color_palette()
 # Pandas options
 pd.options.mode.chained_assignment = None
 pd.options.display.max_columns = 999
+
+
+files_to_use = ["bitcoin_price.csv",
+                "ethereum_price.csv", "ripple_price.csv"]
+# Comparing Closing prices
+
+
+def comparing_all_three(e):
+
+    cols_to_use = []
+    for ind, file_name in enumerate(files_to_use):
+        coin_name = file_name.split("_")[0]
+        if ind == 0:
+            df = pd.read_csv("./data/" + file_name,
+                             usecols=["Date", "Close"], parse_dates=["Date"])
+            df.columns = ["Date", coin_name]
+        else:
+            temp_df = pd.read_csv("./data/" + file_name,
+                                  usecols=["Date", "Close"], parse_dates=["Date"])
+            temp_df.columns = ["Date", coin_name]
+            df = pd.merge(df, temp_df, on="Date")
+        cols_to_use.append(coin_name)
+    print(df.head())
+
+
+comparing_all_three(files_to_use)
+
 
 # READING THE CSV WITH PANDAS
 dfBitcoin = pd.read_csv("./data/bitcoin_price.csv", parse_dates=["Date"])
@@ -114,16 +135,3 @@ sns.heatmap(corrmat, vmax=1., square=True)
 plt.title("Cryptocurrency Heat Map", fontsize=16)
 plt.show()
 # END
-
-
-# Looking for the Future Prices
-DATA_FILE = "ripple_price.csv"
-df = pd.read_csv("./data/" + DATA_FILE,
-                 usecols=["Date", "Close"], parse_dates=["Date"])
-df.columns = ["ds", "y"]
-
-p = Prophet()
-p.fit(df)
-future = p.make_future_dataframe(periods == 30)
-forecast = p.predicts(future)
-forecast[['ds, yhat, yhat_lower', 'yhat_upper']].tail()
