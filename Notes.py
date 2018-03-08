@@ -1,43 +1,44 @@
-###### CALLS FIRST 5 ITEMS # cryptoMarket.head()
+'''
+My Python Notes Learning Data Science
 
-CALSS LAST 5 ITEMS # cryptoMarket.tail()
+'''
+# CALLS FIRST 5 ITEMS # cryptoMarket.head()
 
-MANIPULATE ROWS # cryptoMarket.iloc[:5,]
-
-MANIPULATE COLUMNS # cryptoMarket.iloc[:5,1:9]
-
-CALL ROWS WITHS SPECIFIC COLUMNS # cryptoMarket.loc[:,["name","symbol","date","open","close","high","low","volume","market","close_ratio","spread"]]
-
-CALL SPECIFIC ROWN AND ID's
-cryptoMarket.loc[[1,2],["name","symbol","date"]]
-
-cryptoMarket["single column"]
-
-cryptoMarket[["search","many","columns"]]
-
-type(cryptoMarket["name"]) single column in a series
-
-cryptoMarket[["name","symbol","date","open","close","high","low","volume","market","close_ratio","spread"]]
-
-#Creating a Custom DF
-s1 = pd.Series([1,2])
-s2 = pd.Series(["Warren","James"])
-pd.DataFrame([s1,s2])
-frame = pd.DataFrame(
-    [[1,2],["warren","james"]],
-    index=["row1","row2"],
-    columns = ["column1", "column2"]
-)
-frame.loc["row1":"row2", "column1"]
-
+# CALSS LAST 5 ITEMS # cryptoMarket.tail()
+#
+# MANIPULATE ROWS # cryptoMarket.iloc[:5,]
+#
+# MANIPULATE COLUMNS # cryptoMarket.iloc[:5,1:9]
+#
+# CALL ROWS WITHS SPECIFIC COLUMNS # cryptoMarket.loc[:,["name","symbol","date","open","close","high","low","volume","market","close_ratio","spread"]]
+#
+# CALL SPECIFIC ROWN AND ID's
+# cryptoMarket.loc[[1,2],["name","symbol","date"]]
+#
+# cryptoMarket["single column"]
+#
+# cryptoMarket[["search","many","columns"]]
+#
+# type(cryptoMarket["name"]) single column in a series
+#
+# cryptoMarket[["name","symbol","date","open","close","high","low","volume","market","close_ratio","spread"]]
+#
+# #Creating a Custom DF
+# s1 = pd.Series([1,2])
+# s2 = pd.Series(["Warren","James"])
+# pd.DataFrame([s1,s2])
+# frame = pd.DataFrame(
+#     [[1,2],["warren","james"]],
+#     index=["row1","row2"],
+#     columns = ["column1", "column2"]
+# )
+# frame.loc["row1":"row2", "column1"]
 
 # What I use to explore
-
 
 # files_to_use = ["bitcoin_price.csv",
 #                 "ethereum_price.csv", "ripple_price.csv"]
 # Comparing Closing prices
-
 
 # def comparing_all_three(e):
 #
@@ -58,7 +59,6 @@ frame.loc["row1":"row2", "column1"]
 #
 #
 # comparing_all_three(files_to_use)
-
 
 # dfBitcoin.head()
 # dfEtherium.head()
@@ -155,7 +155,6 @@ frame.loc["row1":"row2", "column1"]
 
 # END
 
-
 # GENERATING A HEATMAP
 # files_to_use = ["bitcoin_price.csv", "ethereum_price.csv", "ripple_price.csv"]
 #
@@ -181,3 +180,8 @@ frame.loc["row1":"row2", "column1"]
 # plt.title("Cryptocurrency Heat Map", fontsize=16)
 # plt.show()
 # END
+
+# READING THE CSV WITH PANDAS
+# dfBitcoin = pd.read_csv("./data/bitcoin_price.csv", parse_dates=["Date"])
+# dfEthereum = pd.read_csv("./data/ethereum_price.csv", parse_dates=["Date"])
+# dfRipple = pd.read_csv("./data/ripple_price.csv", parse_dates=["Date"])
