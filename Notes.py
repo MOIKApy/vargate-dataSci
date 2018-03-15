@@ -2,6 +2,7 @@
 My Python Notes Learning Data Science
 
 '''
+
 # CALLS FIRST 5 ITEMS # cryptoMarket.head()
 
 # CALSS LAST 5 ITEMS # cryptoMarket.tail()
