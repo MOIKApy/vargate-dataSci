@@ -185,3 +185,9 @@ My Python Notes Learning Data Science
 # dfBitcoin = pd.read_csv("./data/bitcoin_price.csv", parse_dates=["Date"])
 # dfEthereum = pd.read_csv("./data/ethereum_price.csv", parse_dates=["Date"])
 # dfRipple = pd.read_csv("./data/ripple_price.csv", parse_dates=["Date"])
+
+# df.min()
+# df.max()
+# df.std()
+# df.median()
+# df.corr()
