@@ -58,21 +58,22 @@ def run_query(query):
 df.to_sql(db, con, schema=None, if_exists='replace',
           index=False, index_label=None, chunksize=None, dtype=None)
 
-sql = """
-SELECT Date,
-bitcoin_price AS 'Bitcoin Close',
-ethereum_price AS 'Ethereum Close',
-ripple_price AS 'Ripple Close'
-FROM cryptoGG
-WHERE Date>='2017-01-01 00:00:00'
-"""
-
-df = pd.read_sql(sql, con)
 
 # Heat Mapp
 
 
-def heatmap(e):
+def close_heatmap(e):
+    sql = """
+    SELECT Date,
+    bitcoin_price AS 'Bitcoin Close',
+    ethereum_price AS 'Ethereum Close',
+    ripple_price AS 'Ripple Close'
+    FROM cryptoGG
+    WHERE Date>='2017-01-01 00:00:00'
+    """
+
+    df = pd.read_sql(sql, con)
+
     corrmat = df.corr(method="spearman")
     fig, ax = plt.subplots(figsize=(10, 10))
     sns.heatmap(corrmat, vmax=1.0, square=True)
@@ -82,6 +83,18 @@ def heatmap(e):
 
 # Create a Pie Chart
 def close_avg(e):
+
+    sql = """
+    SELECT Date,
+    bitcoin_price AS 'Bitcoin Close',
+    ethereum_price AS 'Ethereum Close',
+    ripple_price AS 'Ripple Close'
+    FROM cryptoGG
+    WHERE Date>='2017-01-01 00:00:00'
+    """
+
+    df = pd.read_sql(sql, con)
+
     bitcoin_avg = df['Bitcoin Close'].mean()
     ethereum_avg = df['Ethereum Close'].mean()
     ripple_avg = df['Ripple Close'].mean()
@@ -105,6 +118,6 @@ def close_avg(e):
 
 
 # Creates Heat Map
-heatmap(df)
+close_heatmap(df)
 # Creates Pie Chart of Close Avg
 close_avg(df)
