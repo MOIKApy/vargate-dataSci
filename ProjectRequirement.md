@@ -17,5 +17,5 @@ Must include a README file that states the following:
 There are many other modifications to data that could meet this requirement
 - [x] Visualize the results of your analysis using Matplotlib, Seaborn, Bokeh or another Python Data Visualization library. Your results cannot be a plaintext representation and you are encouraged to explore a visualization approach that clearly supports a conclusion/result of the analysis of your data.
 - [x] Your project is uploaded to GitHub
-- [x] If your project requires your datas ource to be included with the project (instead of accessing it from an external source such as through an API), please speak with your mentor about how best to approach this
+- [x] If your project requires your data source to be included with the project (instead of accessing it from an external source such as through an API), please speak with your mentor about how best to approach this
 - [x] Have fun! Your project should be something you're proud of, and that adequately demonstrates your base knowledge in the concepts you've learned.
