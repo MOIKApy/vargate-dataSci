@@ -1,5 +1,10 @@
 # Python Data Science Project for Code Louisville
-###### Please Run in Jupyter Notebook or py index.py
+###### How to Run
+  - cd ./to/root/of/dir
+  - run
+    - py index.py
+    - or jupyter notebook
+
 ###### Installed Python from www.anaconda.com
 ###### Please install these packages before running:
 - jupyter notebook

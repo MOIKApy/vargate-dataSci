@@ -79,7 +79,7 @@ def close_heatmap(e):
     FROM cryptoGG
     WHERE Date>='2017-01-01 00:00:00'
     """
-
+    # Turns Database into Dataframe
     df = pd.read_sql(sql, con)
 
     corrmat = df.corr(method="spearman")
@@ -99,19 +99,21 @@ def close_avg_pie(e):
     Close_y AS 'Ethereum Close',
     Close AS 'Ripple Close'
     FROM cryptoGG
-    WHERE Date>='2017-01-01 00:00:00'
+    WHERE Date BETWEEN '2018-01-01 00:00:00'
+    AND '2018-01-31 00:00:00'
     """
-
+    # Turns Database into Dataframe
     df = pd.read_sql(sql, con)
 
     bitcoin_avg = df['Bitcoin Close'].mean()
     ethereum_avg = df['Ethereum Close'].mean()
     ripple_avg = df['Ripple Close'].mean()
+    print(ripple_avg)
 
     labels = ['Bitcoin', 'Ethereum', 'Ripple']
     values = [bitcoin_avg, ethereum_avg, ripple_avg]
     colors = ['gold', 'yellowgreen', 'red']
-    explode = (0, 0, 0.1)  # explode 1st slice
+    explode = (0, 0, 0.01)  # explode 1st slice
 
     # Plot
     plt.pie(
@@ -125,7 +127,7 @@ def close_avg_pie(e):
 
     plt.axis('equal')
     plt.title(
-        "Cryptocurrency Close Average: January 1st, 2017 - Present",
+        "Close Average: January 2018",
         fontsize=16)
     plt.show()
 
